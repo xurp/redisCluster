@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     @Cacheable(value="user",key="'user_id'+#userId")
+    //如果value里没有这个key,就从数据库读并更新缓存,否则直接从缓存读
     public User getUser(Integer userId) {
         return userMapper.findUserById(userId);
     }
